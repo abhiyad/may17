@@ -81,14 +81,17 @@ int main ()
 			arr[++l]=1;
 		curr=curr2;
 	}
+	l++;
 	//for(i=0;i<=l;i++)printf("%d ",arr[i]);// we have required array
 	//-----------------------------------------------------------------------------------------
 	char ch;
 	ch= getchar();
 	while(ch!=EOF&&ch!="\n")
 	{
-		if(ch=='?')answer(arr,k,l);
-		else shift(arr);
+	   // for(i=0;i<l;i++)printf("%d ",arr[i]);
+	    //printf("\n");
+		if(ch=='?')answer(arr,k);
+		if(ch=='!') shift(arr);
 		ch=getchar();
 	}	
 		return 0;
