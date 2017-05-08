@@ -1,0 +1,26 @@
+
+str = raw_input()
+arr = str.split()
+n=int(arr[0])
+k=long(arr[1])
+
+def generate(A):
+  c=0
+  n = len(A)
+  bitset = 2 ** n
+  for i in xrange(1, bitset):
+    j = 0
+    product = 1
+    while i > 0:
+      if i & 1 == 1 :
+        product*=int(A[j])
+        if(product>k):
+          break
+      i = i >> 1
+      j = j + 1
+    if(product <= k):
+      c+=1 
+  print c    
+str = raw_input()
+arr = str.split()
+generate(arr)
