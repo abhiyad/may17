@@ -1,0 +1,95 @@
+#include <stdio.h>
+//========================================================
+int l=0;
+void answer(int arr[],int k)
+{int max=0;
+	int i;
+	for(i=1;i<l;i+=2)
+	{
+		if(arr[i]>max)
+			max=arr[i];
+	}
+	if(max>k)max=k;
+	printf("%d\n" ,max);
+}
+
+//================================================
+
+
+
+void shift(int arr[])
+{int i;
+	if(l%2==1)
+	{
+		arr[l-1]--;
+		arr[0]++;
+		if(arr[l-1]==0)l--;
+	}
+	else{
+		if(arr[0]==0)
+		{
+			arr[1]++;
+			arr[l-1]--;
+			if(arr[l-1]==0)l--;
+		}
+		else
+		{	arr[l-1]--;
+			for(i=l+1;i>=2;i--)
+				arr[i]=arr[i-2];
+			arr[0]=0;
+			arr[1]=1;
+			l+=2;
+			if(arr[l-1]==0)l--;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+//=========================================================
+int main ()
+{
+	int arr[100];
+	int  n,k,p;
+	scanf("%d",&n);
+	scanf("%d",&k);
+	scanf("%d",&p);
+	int i;
+	int curr;
+	scanf("%d",&curr);
+	if(curr==1){
+		arr[0]=0;
+		arr[1]=1;
+		l++;
+	}
+	else
+		arr[l]=1;
+	for(i=0;i<n-1;i++)
+	{
+		int curr2;
+		scanf("%d",&curr2);
+		if(curr==curr2)
+			arr[l]++;
+		else
+			arr[++l]=1;
+		curr=curr2;
+	}
+	//for(i=0;i<=l;i++)printf("%d ",arr[i]);// we have required array
+	//-----------------------------------------------------------------------------------------
+	char ch;
+	ch= getchar();
+	while(ch!=EOF&&ch!="\n")
+	{
+		if(ch=='?')answer(arr,k,l);
+		else shift(arr);
+		ch=getchar();
+	}	
+		return 0;
+}
